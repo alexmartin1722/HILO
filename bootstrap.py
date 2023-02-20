@@ -31,17 +31,17 @@ def bootstrap(matrix, n: int, m: int):
 
     for i in range(m):
         randoms = random.sample(range(0, matrix.shape[0]), n)
-        print('Randoms', randoms, 'Iteration', i)
+        # print('Randoms', randoms, 'Iteration', i)
         A = matrix[randoms, :]
-        print('A', A)
+        # print('A', A)
 
         # for each column, sum the values
         J[i, :] = np.sum(A, axis=0)
-        print('J\n', J)
+        # print('J\n', J)
 
         # for each column, sum the squared values
         K[i, :] = np.sum(np.square(A), axis=0)
-        print('K\n', K)
+        # print('K\n', K)
     return J, K
 
 def testing():
@@ -72,7 +72,7 @@ def main():
         matrix = np.loadtxt(args.matrix)
     
     J, K = bootstrap(matrix, args.n, args.m)
-    
+
     #write J and K to file
     np.savetxt(args.out_dir + '/J.csv', J, delimiter=',')
     np.savetxt(args.out_dir + '/K.csv', K, delimiter=',')
